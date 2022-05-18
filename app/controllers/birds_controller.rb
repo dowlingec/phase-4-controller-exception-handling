@@ -40,6 +40,10 @@ class BirdsController < ApplicationController
   end
 
   private
+  
+  def find_bird
+    Bird.find(id: params[:id])
+  end
 
   def bird_params
     params.permit(:name, :species, :likes)
@@ -49,8 +53,5 @@ class BirdsController < ApplicationController
     render json: { error: "Bird not found" }, status: :not_found
   end
 
-  def find_bird
-    Bird.find(id: params[:id])
-  end
 
 end
